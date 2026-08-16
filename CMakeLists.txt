@@ -3,6 +3,8 @@
 
 cmake_minimum_required(VERSION 3.28)
 
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5 CACHE STRING "Minimum CMake policy version accepted by dependencies")
+
 project(RedBoltXR VERSION 0.1.0 LANGUAGES C CXX)
 
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build dependencies statically" FORCE)
@@ -65,9 +67,11 @@ endif()
 set(REDBOLT_BINDING_CXX_COMPILER "${CMAKE_CXX_COMPILER}")
 set(REDBOLT_OPENXR_BINDING_INCLUDE_DIRS ${REDBOLT_OPENXR_INCLUDE_DIRS})
 set(_redbolt_openxr_binding_defines)
-if(WIN32)
+if(NOT ANDROID)
     list(APPEND REDBOLT_OPENXR_BINDING_INCLUDE_DIRS
         "${REDBOLT_ROOT}/extern/Diligent/ThirdParty/Vulkan-Headers/include")
+endif()
+if(WIN32)
     list(APPEND _redbolt_openxr_binding_defines
         XR_USE_PLATFORM_WIN32=1
         XR_USE_GRAPHICS_API_D3D11=1
@@ -92,6 +96,9 @@ add_dependencies(redbolt-xr-native-openxr redbolt-generate-openxr-bindings)
 target_link_libraries(redbolt-xr-native-openxr PRIVATE SharpCpp::NativeSupport openxr_loader)
 target_include_directories(redbolt-xr-native-openxr PRIVATE ${REDBOLT_OPENXR_BINDING_INCLUDE_DIRS})
 target_compile_definitions(redbolt-xr-native-openxr PRIVATE REDBOLT_NATIVE_BUILD ${_redbolt_openxr_binding_defines})
+if(MINGW)
+    target_compile_options(redbolt-xr-native-openxr PRIVATE "-Wa,-mbig-obj")
+endif()
 set_target_properties(redbolt-xr-native-openxr PROPERTIES
     OUTPUT_NAME "${REDBOLT_OPENXR_NATIVE_LIBRARY_NAME}"
     RUNTIME_OUTPUT_DIRECTORY "${REDBOLT_RUNTIME_OUTPUT_DIR}"

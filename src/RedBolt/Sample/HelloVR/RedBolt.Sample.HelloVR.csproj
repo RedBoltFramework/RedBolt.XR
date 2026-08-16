@@ -1,0 +1,14 @@
+<!-- Copyright (c) 2026 RedBolt and contributors. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>RedBolt.Sample.HelloVR</AssemblyName>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../XR/RedBolt.XR.csproj" />
+    <ProjectReference Include="$(RedBoltPhysicsJoltRoot)/src/RedBolt/PhysicsJolt/RedBolt.PhysicsJolt.csproj" />
+    <ProjectReference Include="$(RedBoltRoot)/src/RedBolt/Core/RedBolt.Core.csproj" />
+    <ProjectReference Include="$(RedBoltRoot)/src/RedBolt/DearImGui/RedBolt.DearImGui.csproj" />
+    <Reference Include="RedBolt.Bindings.DearImGui" HintPath="$(RedBoltBaseDearImGuiBindingAssembly)" />
+  </ItemGroup>
+</Project>

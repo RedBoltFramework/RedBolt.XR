@@ -1,0 +1,25 @@
+<!-- Copyright (c) 2026 RedBolt and contributors. -->
+<Project Sdk="Microsoft.NET.Sdk" TreatAsLocalProperty="RedBoltTargetFramework;TargetFramework">
+  <PropertyGroup>
+    <RedBoltTargetFramework>net10.0</RedBoltTargetFramework>
+    <TargetFramework>$(RedBoltTargetFramework)</TargetFramework>
+    <UseAppHost>false</UseAppHost>
+    <AssemblyName>RedBolt.XR.Generator.Dependencies</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <OutputPath>$(RedBoltHostToolsOutputDir)/</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <BuildInParallel>false</BuildInParallel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(RedBoltRoot)/src/RedBolt/Generator/Dependencies/BindingTargetGenerator.cs" Link="Shared/BindingTargetGenerator.cs" />
+    <Compile Include="$(RedBoltRoot)/src/RedBolt/Generator/Dependencies/CompilerToolchainDiscovery.cs" Link="Shared/CompilerToolchainDiscovery.cs" />
+    <Compile Include="$(RedBoltRoot)/src/RedBolt/Generator/Dependencies/FixedWidthAliasNormalizer.cs" Link="Shared/FixedWidthAliasNormalizer.cs" />
+    <Compile Include="$(RedBoltRoot)/src/RedBolt/Generator/Dependencies/GeneratorOptions.cs" Link="Shared/GeneratorOptions.cs" />
+    <ProjectReference Include="$(RedBoltSharpCppRoot)/src/SharpCpp.Model/SharpCpp.Model.csproj" AdditionalProperties="$(RedBoltSharpCppManagedProperties)" />
+    <ProjectReference Include="$(RedBoltSharpCppRoot)/src/SharpCpp.Metadata/SharpCpp.Metadata.csproj" AdditionalProperties="$(RedBoltSharpCppManagedProperties)" />
+    <ProjectReference Include="$(RedBoltSharpCppRoot)/src/SharpCpp.Parsing/SharpCpp.Parsing.csproj" AdditionalProperties="$(RedBoltSharpCppManagedProperties)" />
+    <ProjectReference Include="$(RedBoltSharpCppRoot)/src/SharpCpp.Pipeline/SharpCpp.Pipeline.csproj" AdditionalProperties="$(RedBoltSharpCppManagedProperties)" />
+    <ProjectReference Include="$(RedBoltSharpCppRoot)/src/SharpCpp.Rendering/SharpCpp.Rendering.csproj" AdditionalProperties="$(RedBoltSharpCppManagedProperties)" />
+    <ProjectReference Include="$(RedBoltSharpCppRoot)/src/SharpCpp.Support/SharpCpp.Support.csproj" AdditionalProperties="$(RedBoltSharpCppManagedProperties)" />
+  </ItemGroup>
+</Project>

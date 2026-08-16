@@ -1,0 +1,31 @@
+<!-- Copyright (c) 2026 RedBolt and contributors. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>RedBolt.XR.Sample.Android</AssemblyName>
+    <ApplicationId>org.redbolt.xr.samples</ApplicationId>
+    <RedBoltExternalAndroidNativeProject>$(RedBoltXRRoot)/src/RedBolt/Native/RedBolt.XR.Native.Android.csproj</RedBoltExternalAndroidNativeProject>
+    <RedBoltExternalAndroidNativeOutput>$(RedBoltNativeOutputRoot)</RedBoltExternalAndroidNativeOutput>
+    <RedBoltPhysicsJoltAndroidNativeOutput>$(RedBoltPhysicsJoltRoot)/build/bin/$(Configuration)/$(RedBoltPlatform)/extern/runtimes/$(RedBoltPlatform)/native</RedBoltPhysicsJoltAndroidNativeOutput>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../XR/RedBolt.XR.csproj" />
+    <ProjectReference Include="$(RedBoltPhysicsJoltRoot)/src/RedBolt/PhysicsJolt/RedBolt.PhysicsJolt.csproj" />
+    <ProjectReference Include="$(RedBoltRoot)/src/RedBolt/DearImGui/RedBolt.DearImGui.csproj" />
+    <Reference Include="RedBolt.Bindings.DearImGui" HintPath="$(RedBoltBaseDearImGuiBindingAssembly)" />
+    <ProjectReference Include="$(RedBoltPhysicsJoltRoot)/src/RedBolt/Native/RedBolt.PhysicsJolt.Native.Android.csproj" ReferenceOutputAssembly="false" Private="false" PrivateAssets="all" />
+    <ProjectReference Include="../../Native/RedBolt.XR.Native.Android.csproj" ReferenceOutputAssembly="false" Private="false" PrivateAssets="all" />
+    <Compile Include="../HelloVR/**/*.cs" Link="Samples/%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+  <Import Project="$(RedBoltRoot)/src/RedBolt/Build/AndroidSample.targets" />
+  <PropertyGroup>
+    <AndroidManifest>AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+  <Target Name="RedBoltXRCollectAndroidNativeLibraries"
+          BeforeTargets="_BuildApkEmbed;_BuildApkFastDev"
+          DependsOnTargets="RedBoltPrepareAndroidRuntime">
+    <ItemGroup>
+      <AndroidNativeLibrary Include="$(RedBoltExternalAndroidNativeOutput)/libopenxr_loader.so" />
+      <AndroidNativeLibrary Include="$(RedBoltPhysicsJoltAndroidNativeOutput)/libRedBolt.Native.Jolt.so" />
+    </ItemGroup>
+  </Target>
+</Project>

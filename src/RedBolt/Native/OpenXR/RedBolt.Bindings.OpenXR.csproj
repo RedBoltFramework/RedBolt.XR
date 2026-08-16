@@ -1,0 +1,12 @@
+<!-- Copyright (c) 2026 RedBolt and contributors. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>RedBolt.Bindings.OpenXR</AssemblyName>
+    <EnableLibraryImportGenerator>true</EnableLibraryImportGenerator>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(RedBoltGeneratedBindingsDir)' != '' and Exists('$(RedBoltGeneratedBindingsDir)/openxr')">
+    <Compile Include="$(RedBoltGeneratedBindingsDir)/openxr/**/*.g.cs" LinkBase="Generated" />
+  </ItemGroup>
+</Project>

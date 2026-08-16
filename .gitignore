@@ -1,0 +1,29 @@
+# CMake and build outputs.
+cmake-build/
+out/
+build/*
+CMakeUserPresets.json
+compile_commands.json
+RedBolt.log
+imgui.ini
+
+# Dependencies populated by CPM.cmake.
+extern/cmake.lock
+extern/*/
+
+# .NET outputs.
+bin/*
+!bin/CoreData/
+bin/CoreData/*
+!bin/CoreData/XR/
+!bin/CoreData/XR/DefaultManifest.xml
+obj/
+
+# Editor and OS noise.
+.cache/
+.vs/
+.vscode/
+.idea/
+*.user
+*.swp
+*~

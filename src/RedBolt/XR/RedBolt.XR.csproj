@@ -1,0 +1,15 @@
+<!-- Copyright (c) 2026 RedBolt and contributors. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>RedBolt.XR</AssemblyName>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(RedBoltRoot)/src/RedBolt/Core/RedBolt.Core.csproj" />
+    <ProjectReference Include="$(RedBoltRoot)/src/RedBolt/Utility/RedBolt.Utility.csproj" />
+    <ProjectReference Include="../Native/OpenXR/RedBolt.Bindings.OpenXR.csproj" />
+    <ProjectReference Include="$(RedBoltRoot)/src/RedBolt/Generator/Reflection/RedBolt.Generator.Reflection.csproj"
+                      OutputItemType="Analyzer" ReferenceOutputAssembly="false"
+                      GlobalPropertiesToRemove="RedBoltPlatform;RedBoltNativePreset" />
+  </ItemGroup>
+</Project>

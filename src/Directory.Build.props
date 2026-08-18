@@ -7,7 +7,6 @@
     <RedBoltDearImGuiEnabled>true</RedBoltDearImGuiEnabled>
     <RedBoltExternalModuleRoot>$(RedBoltXRRoot)</RedBoltExternalModuleRoot>
     <RedBoltExternalModuleName>RedBolt.XR</RedBoltExternalModuleName>
-    <RedBoltExternalBuildProjectName>RedBolt.XR.Build</RedBoltExternalBuildProjectName>
     <RedBoltExternalGeneratorProjectName>RedBolt.XR.Generator.Dependencies</RedBoltExternalGeneratorProjectName>
     <RedBoltExternalGeneratorProjectPrefix>RedBolt.XR.Generator.</RedBoltExternalGeneratorProjectPrefix>
     <RedBoltExternalNativeAndroidProjectName>RedBolt.XR.Native.Android</RedBoltExternalNativeAndroidProjectName>
@@ -25,6 +24,5 @@
   <Import Project="$(RedBoltRoot)/src/RedBolt/Build/Directory.Build.props" />
   <PropertyGroup>
     <RedBoltExternalModuleEnabled>$(RedBoltXREnabled)</RedBoltExternalModuleEnabled>
-    <RedBoltExternalModuleBuildProperties>RedBoltXREnabled=$(RedBoltXREnabled)</RedBoltExternalModuleBuildProperties>
   </PropertyGroup>
 </Project>

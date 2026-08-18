@@ -44,9 +44,7 @@ unset(CPM_VERSION CACHE)
 include("${REDBOLT_ROOT}/cmake/CPM.cmake")
 set(FETCHCONTENT_BASE_DIR "${CMAKE_BINARY_DIR}/deps")
 
-set(SHARPCPP_BUILD_E2E OFF CACHE BOOL "Build SharpCpp E2E" FORCE)
-set(SHARPCPP_BUILD_RBFX OFF CACHE BOOL "Build SharpCpp rbfx bindings" FORCE)
-add_subdirectory("${REDBOLT_SHARPCPP_ROOT}" "${CMAKE_BINARY_DIR}/deps/SharpCpp" EXCLUDE_FROM_ALL)
+include("${REDBOLT_ROOT}/cmake/RedBoltSharpCpp.cmake")
 
 include("${REDBOLT_ROOT}/extern/OpenXR.cmake")
 set(REDBOLT_OPENXR_NATIVE_LIBRARY_NAME "RedBolt.Native.OpenXR")
@@ -87,7 +85,6 @@ else()
 endif()
 set(REDBOLT_BINDING_DEFINES ${_redbolt_openxr_binding_defines})
 
-include("${REDBOLT_ROOT}/cmake/RedBoltSharpCpp.cmake")
 add_subdirectory(src/RedBolt/Generator/Dependencies)
 add_subdirectory(src/RedBolt/Native/OpenXR)
 

@@ -5,7 +5,7 @@
     <ApplicationId>org.redbolt.xr.samples</ApplicationId>
     <RedBoltExternalAndroidNativeProject>$(RedBoltXRRoot)/src/RedBolt/Native/RedBolt.XR.Native.Android.csproj</RedBoltExternalAndroidNativeProject>
     <RedBoltExternalAndroidNativeOutput>$(RedBoltNativeOutputRoot)</RedBoltExternalAndroidNativeOutput>
-    <RedBoltPhysicsJoltAndroidNativeOutput>$(RedBoltPhysicsJoltRoot)/build/bin/$(Configuration)/$(RedBoltPlatform)/extern/runtimes/$(RedBoltPlatform)/native</RedBoltPhysicsJoltAndroidNativeOutput>
+    <RedBoltPhysicsJoltAndroidNativeOutput>$(RedBoltBuildRoot)/bin/$(Configuration)/$(RedBoltPlatform)/extern/runtimes/$(RedBoltPlatform)/native</RedBoltPhysicsJoltAndroidNativeOutput>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../../XR/RedBolt.XR.csproj" />

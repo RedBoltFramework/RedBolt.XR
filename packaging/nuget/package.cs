@@ -1,7 +1,7 @@
 // Copyright (c) 2026 RedBolt and contributors.
 // This work is licensed under the terms of the MIT license.
 
-#:project ../../../RedBolt/src/RedBolt/Build/Packaging/RedBolt.ExternalModule.Packaging.csproj
+#:project ../../../RedBolt/eng/RedBolt.ModuleBuild/Packaging/RedBolt.ExternalModule.Packaging.csproj
 
 using System.Runtime.CompilerServices;
 using RedBolt.ExternalModule.Packaging;
@@ -15,11 +15,10 @@ return ExternalModulePackager.Run(args, new ExternalModulePackageManifest
     DefaultRids = ["linux-x64"],
     BuildSteps =
     [
-        new("Native/RedBolt.XR.Native.csproj", BuildWhen.Linux),
         new("Native/OpenXR/RedBolt.Bindings.OpenXR.csproj", BuildWhen.Linux, true),
         new("XR/RedBolt.XR.csproj", BuildWhen.Linux, true, "-p:BuildProjectReferences=false"),
         new("XR/RedBolt.XR.csproj", BuildWhen.Windows, false,
-            "-p:RedBoltPlatform=win-x64", "-p:RedBoltNativePreset=win-x64"),
+            "-p:RedBoltPlatform=win-x64"),
         new("Sample/Android/RedBolt.Sample.Android.csproj", BuildWhen.Android, false,
             "--framework", "net10.0-android", "-p:RedBoltEnablePlatforms=android",
             "-p:RedBoltEnableArchitectures=all")

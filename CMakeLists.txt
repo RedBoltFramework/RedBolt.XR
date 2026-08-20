@@ -103,11 +103,12 @@ set_target_properties(redbolt-xr-native-openxr PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib/$<CONFIG>"
     WINDOWS_EXPORT_ALL_SYMBOLS ON
     C_VISIBILITY_PRESET default)
-
-if(TARGET openxr_loader AND NOT WIN32)
-    set_target_properties(openxr_loader PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY "${REDBOLT_RUNTIME_OUTPUT_DIR}"
-        LIBRARY_OUTPUT_DIRECTORY "${REDBOLT_RUNTIME_OUTPUT_DIR}")
+if(NOT WIN32 AND NOT ANDROID)
+    set_target_properties(redbolt-xr-native-openxr PROPERTIES
+        BUILD_RPATH "$ORIGIN"
+        INSTALL_RPATH "$ORIGIN"
+        INSTALL_RPATH_USE_LINK_PATH OFF
+        BUILD_WITH_INSTALL_RPATH TRUE)
 endif()
 
 if(CMAKE_CONFIGURATION_TYPES)
@@ -116,11 +117,6 @@ if(CMAKE_CONFIGURATION_TYPES)
         set_target_properties(redbolt-xr-native-openxr PROPERTIES
             RUNTIME_OUTPUT_DIRECTORY_${_redbolt_xr_configuration_upper} "${REDBOLT_RUNTIME_OUTPUT_DIR}"
             LIBRARY_OUTPUT_DIRECTORY_${_redbolt_xr_configuration_upper} "${REDBOLT_RUNTIME_OUTPUT_DIR}")
-        if(TARGET openxr_loader AND NOT WIN32)
-            set_target_properties(openxr_loader PROPERTIES
-                RUNTIME_OUTPUT_DIRECTORY_${_redbolt_xr_configuration_upper} "${REDBOLT_RUNTIME_OUTPUT_DIR}"
-                LIBRARY_OUTPUT_DIRECTORY_${_redbolt_xr_configuration_upper} "${REDBOLT_RUNTIME_OUTPUT_DIR}")
-        endif()
     endforeach()
 endif()
 
@@ -128,14 +124,9 @@ if(WIN32)
     set_target_properties(redbolt-xr-native-openxr PROPERTIES PREFIX "")
 endif()
 
-if(WIN32)
-    set(_redbolt_openxr_artifacts "\"$<TARGET_FILE_NAME:redbolt-xr-native-openxr>\"")
-else()
-    set(_redbolt_openxr_artifacts "\"$<TARGET_FILE_NAME:redbolt-xr-native-openxr>\", \"$<TARGET_FILE_NAME:openxr_loader>\"")
-endif()
 file(GENERATE
     OUTPUT "${REDBOLT_GENERATED_ROOT}/native-modules/$<CONFIG>/OPENXR.json"
-    CONTENT "{\n  \"module\": \"OPENXR\",\n  \"managedSelector\": \"RedBolt.Bindings.OpenXR\",\n  \"nativeLibrary\": \"RedBolt.Native.OpenXR\",\n  \"requires\": [],\n  \"requirementClosure\": [],\n  \"artifacts\": [${_redbolt_openxr_artifacts}]\n}\n")
+    CONTENT "{\n  \"module\": \"OPENXR\",\n  \"managedSelector\": \"RedBolt.Bindings.OpenXR\",\n  \"nativeLibrary\": \"RedBolt.Native.OpenXR\",\n  \"requires\": [],\n  \"requirementClosure\": [],\n  \"artifacts\": [\"$<TARGET_FILE_NAME:redbolt-xr-native-openxr>\"]\n}\n")
 
 add_custom_target(redbolt-xr-native-all DEPENDS redbolt-xr-native-openxr)
 add_custom_target(redbolt-xr-android-native DEPENDS redbolt-xr-native-openxr)

@@ -5,5 +5,5 @@
     <RedBoltExternalPackageRepositoryUrl>https://github.com/RedBoltFramework/RedBolt.XR.git</RedBoltExternalPackageRepositoryUrl>
     <RedBoltExternalPackageTags>RedBolt game-engine csharp dotnet xr openxr virtual-reality</RedBoltExternalPackageTags>
   </PropertyGroup>
-  <Import Project="../../../RedBolt/src/RedBolt/Build/NuGetPackage.targets" />
+  <Import Project="../../../RedBolt/eng/RedBolt.ModuleBuild/NuGetPackage.targets" />
 </Project>

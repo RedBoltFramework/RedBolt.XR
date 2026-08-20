@@ -1,7 +1,8 @@
 <!-- Copyright (c) 2026 RedBolt and contributors. -->
 <Project>
+  <!-- Registers this module (with native assets) with the shared test-integration logic. -->
   <ItemGroup>
     <RedBoltExternalTestModule Include="$(RedBoltXRRoot)" HasNative="true" />
   </ItemGroup>
-  <Import Project="$(RedBoltRoot)/src/RedBolt/Build/TestIntegration.targets" Condition="'$(RedBoltExternalTestIntegrationImported)' != 'true'" />
+  <Import Project="$(RedBoltRoot)/eng/RedBolt.ModuleBuild/TestIntegration.targets" Condition="'$(RedBoltExternalTestIntegrationImported)' != 'true'" />
 </Project>

@@ -9,6 +9,5 @@
     <ProjectReference Include="$(RedBoltPhysicsJoltRoot)/src/RedBolt/PhysicsJolt/RedBolt.PhysicsJolt.csproj" />
     <ProjectReference Include="$(RedBoltRoot)/src/RedBolt/Core/RedBolt.Core.csproj" />
     <ProjectReference Include="$(RedBoltRoot)/src/RedBolt/DearImGui/RedBolt.DearImGui.csproj" />
-    <Reference Include="RedBolt.Bindings.DearImGui" HintPath="$(RedBoltBaseDearImGuiBindingAssembly)" />
   </ItemGroup>
 </Project>

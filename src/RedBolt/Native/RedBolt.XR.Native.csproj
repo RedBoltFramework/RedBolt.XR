@@ -1,4 +1,0 @@
-<!-- Copyright (c) 2026 RedBolt and contributors. -->
-<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="$(RedBoltRoot)/src/RedBolt/Build/NativeBuildProject.targets" />
-</Project>

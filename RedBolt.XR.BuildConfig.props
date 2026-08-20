@@ -1,8 +1,4 @@
 <!-- Copyright (c) 2026 RedBolt and contributors. -->
 <Project>
-  <PropertyGroup>
-    <RedBoltXREnabled Condition="$([System.String]::Copy('$(_RedBoltEnableModulesList)').Contains(',all,')) or $([System.String]::Copy('$(_RedBoltEnableModulesList)').Contains(',xr,'))">true</RedBoltXREnabled>
-    <RedBoltXREnabled Condition="'$(RedBoltXREnabled)' == '' and !$([System.String]::Copy('$(_RedBoltDisableModulesList)').Contains(',all,')) and !$([System.String]::Copy('$(_RedBoltDisableModulesList)').Contains(',xr,'))">true</RedBoltXREnabled>
-    <RedBoltXREnabled Condition="'$(RedBoltXREnabled)' == ''">false</RedBoltXREnabled>
-  </PropertyGroup>
+  <!-- Module-level build config is currently fixed: all modules are enabled. -->
 </Project>

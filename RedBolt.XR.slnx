@@ -8,8 +8,6 @@
   </Folder>
   <Folder Name="/src/RedBolt/Native/">
     <Project Path="src/RedBolt/Native/OpenXR/RedBolt.Bindings.OpenXR.csproj" />
-    <Project Path="src/RedBolt/Native/RedBolt.XR.Native.csproj" />
-    <Project Path="src/RedBolt/Native/RedBolt.XR.Native.Android.csproj" />
   </Folder>
   <Folder Name="/src/RedBolt/Sample/">
     <Project Path="src/RedBolt/Sample/HelloVR/RedBolt.Sample.HelloVR.csproj" />

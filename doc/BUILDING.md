@@ -24,7 +24,7 @@ build the same sample with the Windows platform selection:
 export PATH=/home/rk/.local/opt/wine-11.14-amd64-wow64/bin:/home/rk/.local/opt/llvm-mingw-20260616-msvcrt-ubuntu-22.04-x86_64/bin:/home/rk/.local/mingw-w64/usr/bin:$PATH
 dotnet build src/RedBolt/Sample/HelloVR/RedBolt.Sample.HelloVR.csproj \
   --configuration Release -m:4 \
-  -p:RedBoltPlatform=win-x64 -p:RedBoltNativePreset=win-x64
+  -p:RedBoltPlatform=win-x64
 ```
 
 Build the Android arm64 application with the workspace JDK, SDK, and NDK:
@@ -37,7 +37,7 @@ export ANDROID_SDK_ROOT=/home/rk/.local/share/redbolt-android/sdk
 export ANDROID_NDK_ROOT=/home/rk/.local/share/redbolt-android/sdk/ndk/27.2.12479018
 dotnet build src/RedBolt/Sample/Android/RedBolt.Sample.Android.csproj \
   --configuration Release --framework net10.0-android -m:4 \
-  -p:RedBoltPlatform=android-arm64 -p:RedBoltNativePreset=android-arm64 \
+  -p:RedBoltPlatform=android-arm64 \
   -p:RedBoltBuildAllAndroidPackages=false
 ```
 

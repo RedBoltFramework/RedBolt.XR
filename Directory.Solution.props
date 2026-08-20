@@ -1,5 +1,6 @@
 <!-- Copyright (c) 2026 RedBolt and contributors. -->
 <Project>
+  <!-- Module solution entry point: declares itself as an external module and chains to the core solution props. -->
   <PropertyGroup>
     <RedBoltXRRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory).'))</RedBoltXRRoot>
     <RedBoltRoot Condition="'$(RedBoltRoot)' == ''">$([System.IO.Path]::GetFullPath('$(RedBoltXRRoot)/../RedBolt'))</RedBoltRoot>
@@ -7,5 +8,5 @@
     <RedBoltExternalModuleRoot>$(RedBoltXRRoot)</RedBoltExternalModuleRoot>
     <RedBoltExternalModuleName>RedBolt.XR</RedBoltExternalModuleName>
   </PropertyGroup>
-  <Import Project="$(RedBoltRoot)/src/RedBolt/Build/Directory.Solution.props" />
+  <Import Project="$(RedBoltRoot)/eng/RedBolt.ModuleBuild/Directory.Solution.props" />
 </Project>

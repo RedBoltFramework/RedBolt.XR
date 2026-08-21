@@ -54,8 +54,8 @@ public sealed class HelloVRSample : Application
 
         parameters.ApplicationName = "RedBolt.Sample.HelloVR";
         parameters.WindowTitle = "RedBolt Hello VR";
-        parameters.ResourcePaths = "CoreData;Data";
-        parameters.ResourcePrefixPaths = ".;..;../Base";
+        parameters.ResourcePaths = "CoreData.XR;CoreData;Data";
+        parameters.ResourcePrefixPaths = ".;..";
         parameters.XR = true;
         parameters.Borderless = false;
         parameters.FullScreen = false;

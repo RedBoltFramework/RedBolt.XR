@@ -1,25 +1,37 @@
-<!-- Copyright (c) 2026 RedBolt and contributors. -->
+<!--
+Copyright (c) 2026 RedBolt and contributors.
+This work is licensed under the terms of the MIT license.
+For a copy, see <https://opensource.org/licenses/MIT> or the accompanying LICENSE file.
+-->
+
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <!-- <redbolt-generated name="android-project-properties"> -->
     <AssemblyName>RedBolt.XR.Sample.Android</AssemblyName>
     <ApplicationId>org.redbolt.xr.samples</ApplicationId>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <RedBoltExternalAndroidNativeOutput>$(RedBoltNativeOutputRoot)</RedBoltExternalAndroidNativeOutput>
-    <RedBoltPhysicsJoltAndroidNativeOutput>$(RedBoltBuildRoot)/bin/$(Configuration)/$(RedBoltPlatform)/extern/runtimes/$(RedBoltPlatform)/native</RedBoltPhysicsJoltAndroidNativeOutput>
+    <AndroidManifest>AndroidManifest.xml</AndroidManifest>
+    <!-- </redbolt-generated name="android-project-properties"> -->
   </PropertyGroup>
   <ItemGroup>
+    <!-- <redbolt-generated name="android-project-items"> -->
+    <Compile Include="Program.cs" />
     <ProjectReference Include="../../XR/RedBolt.XR.csproj" />
-    <ProjectReference Include="$(RedBoltPhysicsJoltRoot)/src/RedBolt/PhysicsJolt/RedBolt.PhysicsJolt.csproj" />
-    <ProjectReference Include="$(RedBoltRoot)/src/RedBolt/DearImGui/RedBolt.DearImGui.csproj" />
-    <Compile Include="../HelloVR/**/*.cs" Link="Samples/%(RecursiveDir)%(Filename)%(Extension)" />
+    <ProjectReference Include="../../../../../RedBolt.PhysicsJolt/src/RedBolt/PhysicsJolt/RedBolt.PhysicsJolt.csproj" />
+    <ProjectReference Include="../../../../../RedBolt/src/RedBolt/DearImGui/RedBolt.DearImGui.csproj" />
+    <Compile Include="../HelloVR/**/*.cs" Link="Samples/RedBoltXR/HelloVR/%(RecursiveDir)%(Filename)%(Extension)" />
+    <!-- </redbolt-generated name="android-project-items"> -->
   </ItemGroup>
-  <Import Project="$(RedBoltRoot)/eng/RedBolt.ModuleBuild/AndroidSample.targets" />
-  <PropertyGroup>
-    <AndroidManifest>AndroidManifest.xml</AndroidManifest>
-  </PropertyGroup>
-  <Target Name="RedBoltXRCollectAndroidNativeLibraries" BeforeTargets="_BuildApkEmbed;_BuildApkFastDev" DependsOnTargets="RedBoltPrepareAndroidRuntime">
+  <!-- <redbolt-generated name="android-project-import"> -->
+  <Import Project="../../../../../RedBolt/eng/RedBolt.ModuleBuild/AndroidSample.targets" />
+  <!-- </redbolt-generated name="android-project-import"> -->
+  <!-- <redbolt-generated name="android-project-targets"> -->
+  <Target Name="RedBoltCollectAdditionalAndroidSampleLibraries" BeforeTargets="_BuildApkEmbed;_BuildApkFastDev" DependsOnTargets="RedBoltPrepareAndroidRuntime">
     <ItemGroup>
-      <AndroidNativeLibrary Include="$(RedBoltExternalAndroidNativeOutput)/libopenxr_loader.so" />
-      <AndroidNativeLibrary Include="$(RedBoltPhysicsJoltAndroidNativeOutput)/libRedBolt.Native.Jolt.so" />
+      <AndroidNativeLibrary Include="$(RedBoltNativeOutputRoot)/libopenxr_loader.so" />
+      <AndroidNativeLibrary Include="$(RedBoltNativeOutputRoot)/libRedBolt.Native.Jolt.so" />
     </ItemGroup>
   </Target>
+  <!-- </redbolt-generated name="android-project-targets"> -->
 </Project>

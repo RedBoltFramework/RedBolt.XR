@@ -44,3 +44,5 @@ dotnet build src/RedBolt/Sample/Android/RedBolt.Sample.Android.csproj \
 Run one build invocation at a time. Use no more than four internal jobs, and use one job while an Android emulator or
 QEMU process is running. The aggregate solution accepts the same platform, architecture, module, and sample selection
 properties as RedBolt and saves its independent selection below `build/BuildConfig.props`.
+
+Each solution build records its active root in `build/BuildRoot.props`. Later direct project builds use the root selected by the last module or monorepo solution build.

@@ -44,6 +44,7 @@ unset(CPM_VERSION CACHE)
 include("${REDBOLT_ROOT}/cmake/CPM.cmake")
 set(FETCHCONTENT_BASE_DIR "${CMAKE_BINARY_DIR}/deps")
 
+include("${REDBOLT_ROOT}/cmake/RedBoltCPM.cmake")
 include("${REDBOLT_ROOT}/cmake/RedBoltSharpCpp.cmake")
 
 include("${REDBOLT_ROOT}/extern/OpenXR.cmake")

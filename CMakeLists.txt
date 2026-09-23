@@ -126,7 +126,7 @@ if(WIN32)
 endif()
 
 file(GENERATE
-    OUTPUT "${REDBOLT_GENERATED_ROOT}/native-modules/$<CONFIG>/OPENXR.json"
+    OUTPUT "${REDBOLT_GENERATED_ROOT}/native-modules/OPENXR.json"
     CONTENT "{\n  \"module\": \"OPENXR\",\n  \"managedSelector\": \"RedBolt.Bindings.OpenXR\",\n  \"nativeLibrary\": \"RedBolt.Native.OpenXR\",\n  \"requires\": [],\n  \"requirementClosure\": [],\n  \"artifacts\": [\"$<TARGET_FILE_NAME:redbolt-xr-native-openxr>\"]\n}\n")
 
 add_custom_target(redbolt-xr-native-all DEPENDS redbolt-xr-native-openxr)

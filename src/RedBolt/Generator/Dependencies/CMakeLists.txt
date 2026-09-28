@@ -7,15 +7,6 @@ if(NOT REDBOLT_DEPENDENCIES_GENERATOR_DLL)
         CACHE FILEPATH "RedBolt.XR dependency generator assembly")
 endif()
 
-file(GLOB_RECURSE REDBOLT_SHARPCPP_GENERATOR_INPUTS CONFIGURE_DEPENDS
-    "${REDBOLT_SHARPCPP_ROOT}/src/SharpCpp.Model/*.cs"
-    "${REDBOLT_SHARPCPP_ROOT}/src/SharpCpp.Metadata/*.cs"
-    "${REDBOLT_SHARPCPP_ROOT}/src/SharpCpp.Parsing/*.cs"
-    "${REDBOLT_SHARPCPP_ROOT}/src/SharpCpp.Pipeline/*.cs"
-    "${REDBOLT_SHARPCPP_ROOT}/src/SharpCpp.Rendering/*.cs"
-    "${REDBOLT_SHARPCPP_ROOT}/src/SharpCpp.Support/*.cs"
-    "${REDBOLT_SHARPCPP_ROOT}/include/SharpCpp/*.h"
-    "${REDBOLT_SHARPCPP_ROOT}/include/SharpCpp/*.hpp")
 file(GLOB_RECURSE REDBOLT_DEPENDENCIES_GENERATOR_INPUTS CONFIGURE_DEPENDS
     "${CMAKE_CURRENT_SOURCE_DIR}/*.cs"
     "${CMAKE_CURRENT_SOURCE_DIR}/*.csproj"
@@ -24,7 +15,6 @@ file(GLOB_RECURSE REDBOLT_DEPENDENCIES_GENERATOR_INPUTS CONFIGURE_DEPENDS
     "${REDBOLT_ROOT}/src/RedBolt/Generator/Dependencies/FixedWidthAliasNormalizer.cs"
     "${REDBOLT_ROOT}/src/RedBolt/Generator/Dependencies/GeneratorOptions.cs")
 
-set(REDBOLT_SHARPCPP_GENERATOR_INPUTS "${REDBOLT_SHARPCPP_GENERATOR_INPUTS}" CACHE INTERNAL "SharpCpp generator inputs")
 set(REDBOLT_DEPENDENCIES_GENERATOR_INPUTS "${REDBOLT_DEPENDENCIES_GENERATOR_INPUTS}" CACHE INTERNAL "RedBolt.XR generator inputs")
 
 set(REDBOLT_OPENXR_GENERATED_DIR "${REDBOLT_NATIVE_GENERATED_DIR}/openxr" CACHE INTERNAL "OpenXR binding output")

@@ -14,9 +14,6 @@
     "../RedBolt/src/RedBolt/DearImGui/RedBolt.DearImGui.csproj"
   ],
   "androidManifest": "src/RedBolt/Sample/Android/AndroidManifest.xml",
-  "androidNativeLibraries": [
-    "$(RedBoltNativeOutputRoot)/libopenxr_loader.so"
-  ],
   "samples": [
     { "id": "hello-vr", "name": "Hello VR", "applicationType": "RedBolt.Sample.HelloVR.HelloVRSample", "source": "HelloVR" }
   ]

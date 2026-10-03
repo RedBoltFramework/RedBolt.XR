@@ -11,6 +11,7 @@ For a copy, see <https://opensource.org/licenses/MIT> or the accompanying LICENS
     <ApplicationId>org.redbolt.xr.samples</ApplicationId>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <RedBoltExternalAndroidNativeOutput>$(RedBoltNativeOutputRoot)</RedBoltExternalAndroidNativeOutput>
+    <RedBoltAndroidSampleNativeModules>RedBolt.Network;RedBolt.PhysicsJolt;RedBolt.XR</RedBoltAndroidSampleNativeModules>
     <AndroidManifest>AndroidManifest.xml</AndroidManifest>
     <!-- </redbolt-generated name="android-project-properties"> -->
   </PropertyGroup>
@@ -27,10 +28,5 @@ For a copy, see <https://opensource.org/licenses/MIT> or the accompanying LICENS
   <Import Project="../../../../../RedBolt/eng/RedBolt.ModuleBuild/AndroidSample.targets" />
   <!-- </redbolt-generated name="android-project-import"> -->
   <!-- <redbolt-generated name="android-project-targets"> -->
-  <Target Name="RedBoltCollectAdditionalAndroidSampleLibraries" BeforeTargets="_BuildApkEmbed;_BuildApkFastDev" DependsOnTargets="RedBoltPrepareAndroidRuntime">
-    <ItemGroup>
-      <AndroidNativeLibrary Include="$(RedBoltNativeOutputRoot)/libopenxr_loader.so" />
-    </ItemGroup>
-  </Target>
   <!-- </redbolt-generated name="android-project-targets"> -->
 </Project>

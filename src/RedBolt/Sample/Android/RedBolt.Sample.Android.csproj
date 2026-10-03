@@ -30,7 +30,6 @@ For a copy, see <https://opensource.org/licenses/MIT> or the accompanying LICENS
   <Target Name="RedBoltCollectAdditionalAndroidSampleLibraries" BeforeTargets="_BuildApkEmbed;_BuildApkFastDev" DependsOnTargets="RedBoltPrepareAndroidRuntime">
     <ItemGroup>
       <AndroidNativeLibrary Include="$(RedBoltNativeOutputRoot)/libopenxr_loader.so" />
-      <AndroidNativeLibrary Include="$(RedBoltNativeOutputRoot)/libRedBolt.Native.Jolt.so" />
     </ItemGroup>
   </Target>
   <!-- </redbolt-generated name="android-project-targets"> -->

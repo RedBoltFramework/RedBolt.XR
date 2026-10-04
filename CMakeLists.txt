@@ -46,6 +46,7 @@ set(FETCHCONTENT_BASE_DIR "${CMAKE_BINARY_DIR}/deps")
 
 include("${REDBOLT_ROOT}/cmake/RedBoltCPM.cmake")
 include("${REDBOLT_ROOT}/cmake/RedBoltSharpCpp.cmake")
+include("${REDBOLT_ROOT}/cmake/RedBoltNativeModuleManifest.cmake")
 
 include("${REDBOLT_ROOT}/extern/OpenXR.cmake")
 set(REDBOLT_OPENXR_NATIVE_LIBRARY_NAME "RedBolt.Native.OpenXR")
@@ -125,9 +126,22 @@ if(WIN32)
     set_target_properties(redbolt-xr-native-openxr PROPERTIES PREFIX "")
 endif()
 
-file(GENERATE
-    OUTPUT "${REDBOLT_GENERATED_ROOT}/native-modules/OPENXR.json"
-    CONTENT "{\n  \"module\": \"OPENXR\",\n  \"managedSelector\": \"RedBolt.Bindings.OpenXR\",\n  \"nativeLibrary\": \"RedBolt.Native.OpenXR\",\n  \"requires\": [],\n  \"requirementClosure\": [],\n  \"artifacts\": [\"$<TARGET_FILE_NAME:redbolt-xr-native-openxr>\"]\n}\n")
+# The OpenXR loader is linked statically on Windows and shipped as a shared library elsewhere.
+set(_redbolt_xr_runtime_artifacts)
+if(NOT WIN32)
+    set(_redbolt_xr_runtime_artifacts "OPENXR=$<TARGET_SONAME_FILE_NAME:openxr_loader>")
+endif()
+redbolt_write_native_module_manifest(
+    MODULE OPENXR
+    TARGET redbolt-xr-native-openxr
+    SELECTOR RedBolt.Bindings.OpenXR
+    LIBRARY_NAME "${REDBOLT_OPENXR_NATIVE_LIBRARY_NAME}"
+    RUNTIME_ARTIFACTS ${_redbolt_xr_runtime_artifacts}
+    OUTPUT_DIR "${REDBOLT_GENERATED_ROOT}/native-modules")
 
 add_custom_target(redbolt-xr-native-all DEPENDS redbolt-xr-native-openxr)
 add_custom_target(redbolt-xr-android-native DEPENDS redbolt-xr-native-openxr)
+if(NOT EMSCRIPTEN)
+    add_dependencies(redbolt-xr-native-all redbolt-xr-native-openxr-module)
+    add_dependencies(redbolt-xr-android-native redbolt-xr-native-openxr-module)
+endif()

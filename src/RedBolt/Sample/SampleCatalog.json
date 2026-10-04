@@ -4,6 +4,7 @@
   "web": false,
   "android": true,
   "native": true,
+  "standalone": true,
   "webNative": false,
   "nativeDependencies": [
     "RedBolt.PhysicsJolt"

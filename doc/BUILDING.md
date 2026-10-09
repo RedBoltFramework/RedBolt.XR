@@ -46,6 +46,6 @@ generated host above and is never part of the aggregate `Samples/` Android host.
 
 Run one build invocation at a time. Use no more than four internal jobs, and use one job while an Android emulator or
 QEMU process is running. The aggregate solution accepts the same `RedBoltEnable`, module, and sample selection
-properties as RedBolt and saves its selection to the active build root's `BuildConfig.props`: a standalone checkout keeps its own under `build/`; inside the monorepo the aggregate solution shares the monorepo `build/BuildConfig.props` with the root solution.
+properties as RedBolt and saves its selection to the active build root's `BuildConfig.props`: the aggregate solution shares `build/BuildConfig.props` with the root solution, because both use the same build root.
 
-The build root is selected statically rather than recorded: inside the monorepo every entry point (solution or direct project) uses the monorepo `build/`, a standalone checkout uses its own `build/`, and `-p:RedBoltBuildRoot=<dir>` overrides both.
+The build root is selected statically rather than recorded: every entry point (solution or direct project) uses the `build/` directory beside the engine directory (the monorepo `build/` in the monorepo), and `-p:RedBoltBuildRoot=<dir>` overrides it.

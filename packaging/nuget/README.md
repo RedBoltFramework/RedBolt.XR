@@ -1,7 +1,7 @@
 # RedBolt.XR NuGet packages
 
 RedBolt.XR versions independently from RedBolt, while recording the exact base RedBolt package version. Produce the
-matching base feed first in `<build root>/package/nuget/RedBolt/out` (`<build root>` is the monorepo `build/` inside the monorepo and the repository's own `build/` standalone; `REDBOLT_BUILD_ROOT` overrides it).
+matching base feed first in `<build root>/package/nuget/RedBolt/out` (`<build root>` is the `build/` directory beside the engine directory; the packaging script reads `REDBOLT_BUILD_ROOT` to override it).
 
 Create Linux x64 packages from Release outputs, building the module first:
 

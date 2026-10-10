@@ -1,4 +1,0 @@
-<!-- Copyright (c) 2026 RedBolt and contributors. -->
-<Project>
-  <Import Project="$(RedBoltRoot)/eng/RedBolt.ModuleBuild/Sample.targets" />
-</Project>

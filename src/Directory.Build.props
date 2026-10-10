@@ -15,6 +15,7 @@
     <RedBoltExternalBindingsSubdirectory>openxr</RedBoltExternalBindingsSubdirectory>
     <RedBoltExternalBindingsProjectName>RedBolt.Bindings.OpenXR</RedBoltExternalBindingsProjectName>
     <RedBoltExternalHasNative>true</RedBoltExternalHasNative>
+    <RedBoltBrowserWasmSupported>false</RedBoltBrowserWasmSupported>
     <RedBoltExternalNativeTargetPrefix>redbolt-xr</RedBoltExternalNativeTargetPrefix>
     <RedBoltExternalEnabledNativeModules>OPENXR</RedBoltExternalEnabledNativeModules>
   </PropertyGroup>

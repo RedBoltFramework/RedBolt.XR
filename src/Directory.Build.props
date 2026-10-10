@@ -17,8 +17,6 @@
     <RedBoltExternalHasNative>true</RedBoltExternalHasNative>
     <RedBoltExternalNativeTargetPrefix>redbolt-xr</RedBoltExternalNativeTargetPrefix>
     <RedBoltExternalEnabledNativeModules>OPENXR</RedBoltExternalEnabledNativeModules>
-    <RedBoltExternalDesktopResourceRoot>$(RedBoltXRRoot)</RedBoltExternalDesktopResourceRoot>
-    <RedBoltExternalDesktopResourceName>XR</RedBoltExternalDesktopResourceName>
   </PropertyGroup>
   <Import Project="$(RedBoltRoot)/eng/RedBolt.ModuleBuild/Directory.Build.props" />
 </Project>
